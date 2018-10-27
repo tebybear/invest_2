@@ -5,5 +5,6 @@ class Fund < ApplicationRecord
   validates :symbol, presence: true, uniqueness: true
   validates_format_of :symbol, :with => /[A-Za-z]*/
 
-  scope :top_funds, -> { joins(:users).group(:fund_id).having("count(user_id) > 1") }
+  scope :all_funds, -> { order(symbol: :ASC)}
+  scope :top_funds, -> { joins(:users).group(:fund_id).order("count(user_id) DESC").limit(5)}
 end
