@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2018_09_26_075440) do
   end
 
   create_table "investments", force: :cascade do |t|
-    t.boolean "action"
     t.integer "quantity"
     t.decimal "price"
     t.integer "user_id"
