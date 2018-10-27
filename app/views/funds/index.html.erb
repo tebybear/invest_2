@@ -1,10 +1,22 @@
 <div class="center-horizontal block">
-  <h1>All Funds</h1>
+  <h1>Most Popular Funds</h1>
 
   <ul>
-  <% @funds.each do |fund| %>
+  <% @top_funds.each do |fund| %>
     <li><%= fund.symbol %></li>
     <% end %>
   </ul>
   <br><br>
+</div>
+
+
+<div class="center-horizontal block">
+   <%= link_to "See More Funds", funds_path %>
+
+  <!-- <ul>
+  <% @funds.each do |fund| %>
+    <li><%= fund.symbol %></li>
+    <% end %>
+  </ul>
+  <br><br> -->
 </div>

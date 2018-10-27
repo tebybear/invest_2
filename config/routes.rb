@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   get '/auth/failure', to: redirect('/')
 
   resources :users do
-    resources :funds
     resources :investments
   end
 
-  get '/funds/top_funds' => 'funds#top_funds', as: 'top_funds'
+  resources :funds
+
+  # get '/funds/top_funds' => 'funds#top_funds', as: 'top_funds'
   get '/investments/latest_investments' => 'investments#latest', as: 'latest'
 end

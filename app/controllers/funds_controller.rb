@@ -4,11 +4,12 @@ class FundsController < ApplicationController
 
   def index
     @funds = Fund.all
-  end
-
-  def top_funds
     @top_funds = Fund.top_funds
   end
+
+  # def top_funds
+  #   @top_funds = Fund.top_funds
+  # end
 
   private
 

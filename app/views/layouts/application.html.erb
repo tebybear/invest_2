@@ -20,8 +20,8 @@
         <%= button_to "My Investments", user_path(current_user), method: :get, class: 'float-button' %>
         <%= button_to "New Investment", new_user_investment_path(current_user), method: :get, class: 'float-button' %>
         <%= button_to "Latest Investments", latest_path, method: :get, class: 'float-button' %>
-        <%= button_to "See All Funds", user_funds_path(current_user), method: :get, class: 'float-button' %>
-        <%= button_to "Top Funds", top_funds_path, method: :get, class: 'float-button' %>
+        <%= button_to "See All Funds", funds_path, method: :get, class: 'float-button' %>
+        <!-- <%#= button_to "Top Funds", top_funds_path, method: :get, class: 'float-button' %> -->
         <%= button_to "All Users", users_path, method: :get, class: 'float-button' %>
         <%= button_to "My Account", edit_user_path(current_user), method: :get, class: 'float-button' %>
         <%= button_to "Sign Out", signout_path, method: :get, class: 'float-button' %>
