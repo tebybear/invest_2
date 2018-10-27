@@ -1,0 +1,10 @@
+<div class="center-horizontal block">
+  <h1>All Funds</h1>
+
+  <ul>
+  <% @funds.each do |fund| %>
+    <li><%= fund.symbol %></li>
+    <% end %>
+  </ul>
+  <br><br>
+</div>

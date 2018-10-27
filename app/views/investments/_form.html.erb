@@ -1,0 +1,35 @@
+<% if @investment.errors.any? %>
+  <div id="errors">
+    <h4>Error:</h4>
+
+    <ul>
+    <% @investment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+    <br>
+  </div>
+    <% end %>
+
+<%=form_for([user, investment]) do |f|%>
+
+  <%=f.hidden_field :user_id, :value => @user.id %>
+
+  <%=f.label :quantity, "Quantity:" %>
+  <%=f.number_field :quantity %><br>
+  <br>
+  <%=f.label :price, "Price:" %>
+  <%=f.text_field :price %><br>
+
+  <p>Select From Existing Funds or Add a New Fund:</p>
+
+  Choose Fund: <%= f.collection_select :fund_id, Fund.all, :id, :symbol, include_blank: true %><br><br>
+
+  <%= f.fields_for :new_fund do |fund_fields| %>
+    <%= fund_fields.label :symbol, "Fund Symbol:" %>
+    <%= fund_fields.text_field :symbol %><br>
+  <% end %><br>
+
+  <%=f.submit %><br>
+<%end%>
+<br><br>

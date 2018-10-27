@@ -1,0 +1,8 @@
+<div id="errors">
+  <h4><%= flash[:notice] %></h4>
+</div>
+
+<div class="center-horizontal block">
+  <h1>Update Info For <%=@user.name%></h1>
+  <%=render partial: 'form', locals: {user: @user}%>
+</div>

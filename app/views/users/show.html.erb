@@ -1,0 +1,40 @@
+<div class="center-horizontal block">
+  <% if @user == current_user %>
+    <h1>Hello <%= @user.name %>!</h1>
+  <% else %>
+    <h1><%= @user.name %></h1>
+  <% end %>
+
+  <h3>Investments</h3>
+    <table style="width:100%">
+      <tr>
+        <th align="left">Fund:</th>
+        <th align="left">Quantity:</th>
+        <th align="left">Price:</th>
+        <th align="left">Date Created:</th>
+        <% if @user == current_user %>
+          <th align="left">Remove?</th>
+        <% end %>
+      </tr>
+    <% @user.investments.order(created_at: :desc).each do |investment| %>
+      <tr>
+        <td><%= investment.fund.symbol%></td>
+        <td><%= investment.quantity%></td>
+        <td><%= investment.price%></td>
+        <td><%= investment.created_at.strftime("%m/%d/%Y") %></td>
+        <% if @user == current_user %>
+          <td><%= button_to "Delete", user_investment_path(current_user, investment), method: :delete, data: {confirm: "You sure?"} %>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+    <br><br>
+
+<h3>Funds</h3>
+  <ul>
+    <% @user.funds.uniq.each do |fund| %>
+    <li><%= fund.symbol %></li>
+    <% end %>
+  </ul>
+<br><br>
+</div>
