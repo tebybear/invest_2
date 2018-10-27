@@ -1,8 +1,8 @@
 ## i.nvest
 
-Create and share your i.nvestments.
+A platform for investors to share their investments. Track and share your funds and trades in one place or view other portfolios and top trades for your next investment idea.
 
-Sign up through the site or using your Google account to begin creating your own investments and to view the top funds chosen by users.
+Sign up through the site or using your Google account to begin.
 
 ## Installation
 
