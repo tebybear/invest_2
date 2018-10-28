@@ -2,9 +2,13 @@ class InvestmentsController < ApplicationController
   before_action :require_signin
 
   def index
-    # @latest_investments = Investment.latest
+    @latest_investments = Investment.latest
     @investments = Investment.all
-    render 'investments/index', :layout => false
+    # render 'investments/index', :layout => false
+    respond_to do |format|
+      format.json {render json: @investments}
+      format.html {render :index}
+    end
   end
 
   def new
