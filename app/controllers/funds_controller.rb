@@ -5,6 +5,8 @@ class FundsController < ApplicationController
   def index
     @funds = Fund.all
     @top_funds = Fund.top_funds
+    @user = current_user
+    @investment = Investment.new
   end
 
   # def top_funds

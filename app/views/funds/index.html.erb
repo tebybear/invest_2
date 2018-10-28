@@ -1,20 +1,26 @@
-<div class="center-horizontal block">
-  <h1>Top Funds</h1>
-  <ul>
-  <% @top_funds.each do |fund| %>
-    <li><%= fund.symbol %></li>
-    <% end %>
-  </ul>
-  <br><br>
+<div id="form-block" class="block">
+  <h2>New Investment:</h2>
+  <%=render partial: 'investments/form', locals: {user: @user, investment: @investment}%>
 </div>
 
 
-<div class="center-horizontal block">
-  <h1>All Funds</h1>
-  <ul>
-  <% @funds.each do |fund| %>
-    <li><%= fund.symbol %></li>
-    <% end %>
-  </ul>
-  <br><br>
+<div class="row">
+  <div class="center-horizontal block">
+    <h1>Top Funds</h1>
+    <ul>
+    <% @top_funds.each do |fund| %>
+      <li><%= fund.symbol %></li>
+      <% end %>
+    </ul>
+    <br>
+  </div>
+  <div class="center-horizontal block">
+    <h1>All Funds</h1>
+    <ul>
+    <% @funds.each do |fund| %>
+      <li><%= fund.symbol %></li>
+      <% end %>
+    </ul>
+    <br><br>
+  </div>
 </div>
