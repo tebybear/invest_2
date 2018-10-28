@@ -4,6 +4,10 @@ body {
   color: #f7f7f7;
 }
 
+label, p {
+  font-family: Helvetica;
+}
+
 .center-screen{
   display: flex;
   flex-direction: column;
@@ -87,6 +91,10 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
   background: #f7f7f7;
+}
+
+.new_investment {
+  line-height: 30px;
 }
 
 
