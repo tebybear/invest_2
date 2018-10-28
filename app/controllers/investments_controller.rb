@@ -6,8 +6,8 @@ class InvestmentsController < ApplicationController
     @investments = Investment.all
     # render 'investments/index', :layout => false
     respond_to do |format|
-      format.json {render json: @investments}
-      format.html {render :index}
+      format.json {render json: @investments, :layout => false}
+      format.html {render 'investments/index', :layout => false}
     end
   end
 
