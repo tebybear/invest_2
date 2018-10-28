@@ -4,7 +4,7 @@ class InvestmentsController < ApplicationController
   def index
     @latest_investments = Investment.latest
     @investments = Investment.all
-    render :json => @investments, :layout => false
+    render :json => @investments, status: 200, :layout => false
     # respond_to do |format|
     #   format.json {render json: @investments, :layout => false}
     #   format.html {render 'investments/index', :layout => false}
