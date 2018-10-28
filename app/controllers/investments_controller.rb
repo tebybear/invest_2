@@ -2,8 +2,9 @@ class InvestmentsController < ApplicationController
   before_action :require_signin
 
   def index
-    @latest_investments = Investment.latest
+    # @latest_investments = Investment.latest
     @investments = Investment.all
+    render 'investments/index', :layout => false
   end
 
   def new
@@ -29,7 +30,7 @@ class InvestmentsController < ApplicationController
 
   def latest
     @latest_investments = Investment.latest
-    render 'latest', :layout => false
+    @investments = Investment.all
   end
 
   private

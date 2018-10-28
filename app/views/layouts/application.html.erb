@@ -19,7 +19,7 @@
       <div id="navbar">
         <%= button_to "My Investments", user_path(current_user), method: :get, class: 'float-button' %>
         <%= button_to "New Investment", new_user_investment_path(current_user), method: :get, class: 'float-button' %>
-        <%= button_to "View Investments", investments_path, method: :get, class: 'float-button' %>
+        <%= button_to "View Investments", latest_path, method: :get, class: 'float-button' %>
         <%= button_to "Explore Funds", funds_path, method: :get, class: 'float-button' %>
         <!-- <%#= button_to "Top Funds", top_funds_path, method: :get, class: 'float-button' %> -->
         <%= button_to "All Users", users_path, method: :get, class: 'float-button' %>
