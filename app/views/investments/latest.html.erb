@@ -1,6 +1,6 @@
 <div class="center-horizontal block">
 <h1>Latest Investments:</h1>
-<table style="width:100%">
+<table>
   <tr>
     <th align="left">Fund:</th>
     <th align="left">Quantity:</th>
@@ -19,8 +19,8 @@
     <% end %>
 </table>
 <br>
+<p id="load_investments"><%= link_to "More Investments", investments_path %></p>
 </div>
 
-<div class="center-horizontal block">
-  <p id="load_investments"><%= link_to "All Investments", investments_path %></p>
+<div id="render_investments" class="center-horizontal block">
 </div>
