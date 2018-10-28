@@ -1,5 +1,5 @@
 <div class="center-horizontal block">
-  <h1>All Investments</h1>
+<h1>Recent Investments:</h1>
 <table style="width:100%">
   <tr>
     <th align="left">Fund:</th>
@@ -8,7 +8,7 @@
     <th align="left">Created By:</th>
     <th align="left">Date Created:</th>
   </tr>
-  <% @investments.order(created_at: :desc).each do |investment| %>
+  <% @latest_investments.each do |investment| %>
     <tr>
       <td><%= investment.fund.symbol%></td>
       <td><%= investment.quantity%></td>
@@ -19,6 +19,4 @@
     <% end %>
 </table>
 <br>
-<p id="load_investments"><%= link_to "Latest Investments", latest_path %></p>
 </div>
-<br>

@@ -2,8 +2,8 @@ class InvestmentsController < ApplicationController
   before_action :require_signin
 
   def index
-    @investments = Investment.all
     @latest_investments = Investment.latest
+    @investments = Investment.all
   end
 
   def new
@@ -27,9 +27,10 @@ class InvestmentsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  # def latest
-  #   @latest_investments = Investment.latest
-  # end
+  def latest
+    @latest_investments = Investment.latest
+    render 'latest', :layout => false
+  end
 
   private
 
