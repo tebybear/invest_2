@@ -3,6 +3,7 @@ class InvestmentsController < ApplicationController
 
   def index
     @investments = Investment.all
+    @latest_investments = Investment.latest
   end
 
   def new
@@ -26,9 +27,9 @@ class InvestmentsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def latest
-    @latest_investments = Investment.latest
-  end
+  # def latest
+  #   @latest_investments = Investment.latest
+  # end
 
   private
 
