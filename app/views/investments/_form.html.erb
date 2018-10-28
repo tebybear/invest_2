@@ -21,7 +21,7 @@
   <%=f.label :price, "Price:" %>
   <%=f.text_field :price %><br>
 
-  <p>Select From Existing Funds or Add a New Fund:</p>
+  <p>Select from existing funds or add your fund:</p>
 
   Choose Fund: <%= f.collection_select :fund_id, Fund.all, :id, :symbol, include_blank: true %><br><br>
 
@@ -30,6 +30,6 @@
     <%= fund_fields.text_field :symbol %><br>
   <% end %><br>
 
-  <%=f.submit %><br>
+  <%=f.submit "Submit", :class => "button"%><br>
 <%end%>
 <br><br>

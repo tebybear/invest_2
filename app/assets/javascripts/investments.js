@@ -3,7 +3,7 @@ $(document).ready(function(){
     e.preventDefault();
     $.get("/investments", function(data) {
       $('#render_investments').html(data);
-      $('#load_investments').empty();
+      $('#load_investments').hide();
     });
   });
 });

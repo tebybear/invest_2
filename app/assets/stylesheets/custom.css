@@ -31,7 +31,7 @@ body {
   width: 160px
 }
 
-.button {
+.button, .link_button {
   background-color: #f7f7f7;
   border: 1px solid #454545;
   color: #454545;
@@ -47,10 +47,11 @@ body {
 .float-button {
   padding: 8px 20px;
   float: left;
-  width: 12.5%;
+  width: 14.25%;
   font-size: 30px;
   border-radius: 0px;
 }
+
 
 
 ul {
@@ -71,13 +72,26 @@ table, th, td {
   width: 100px;
 }
 
+/* th, td {
+  border-bottom: 1px solid #454545;
+} */
 table {
   width: 100%;
 }
 
-th, td {
-  border-bottom: 1px solid #454545;
+th {
+  font-weight: bold;
 }
+
+tr:nth-child(even) {
+  background: #454545;
+  color: #f7f7f7;
+}
+
+tr:nth-child(odd) {
+  background: #f7f7f7;
+}
+
 
 #login {
   font-family: Helvetica;

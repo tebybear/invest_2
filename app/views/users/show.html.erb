@@ -5,11 +5,11 @@
     <h1><%= @user.name %></h1>
   <% end %>
 
-  <h2>Investments</h2>
   <% if new_user(@user) %>
     <p>You don't have any investments yet. To begin, explore our funds to find your first investment or create your own below:<p>
   <% else %>
-    <table style="width:100%">
+    <h2>Your Investments:</h2>
+    <table>
       <tr>
         <th align="left">Fund:</th>
         <th align="left">Quantity:</th>
@@ -35,7 +35,7 @@
   <% end %>
 
 <% if !new_user(@user) %>
-<h2>Funds</h2>
+<h2>Your Funds:</h2>
   <ul>
     <% @user.funds.uniq.each do |fund| %>
     <li><%= fund.symbol %></li>

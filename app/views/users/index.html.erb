@@ -1,21 +1,17 @@
 <div class="center-horizontal block">
-  <h1>View User Profiles</h1>
-
+  <h1>User Portfolios</h1>
   <br>
+
   <table>
     <tr>
       <th>User</th>
-      <th>Investments</th>
-      <th>Funds</th>
       <th>Profile</th>
     </tr>
     <% @users.order(created_at: :desc).each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= user.investments.count %></td>
-        <td><%= user.funds.count %></td>
-        <td><%= button_to "View", user_path(user), method: :get %>
-    <tr>
+        <td><%= button_to "View", user_path(user), method: :get %></td>
+      </tr>
       <% end %>
   </table>
 
