@@ -7,14 +7,15 @@ $(function(){
         `<h1>All Investments</h1>
         <table>
           <tr>
-            <th align="left">Fund:</th>
-            <th align="left">Quantity:</th>
-            <th align="left">Price:</th>
-            <th align="left">Created By:</th>
-            <th align="left">Date Created:</th>
+            <th>Fund:</th>
+            <th>Quantity:</th>
+            <th>Price:</th>
+            <th>Created By:</th>
+            <th>Date Created:</th>
           </tr>`
         )
       json.forEach(function(investment) {
+        console.log(investment);
         $('#render_investments').append(
           `<tr>
               <td>${investment.fund.symbol}</td>

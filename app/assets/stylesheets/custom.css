@@ -75,6 +75,7 @@ table, th, td {
 /* th, td {
   border-bottom: 1px solid #454545;
 } */
+
 table {
   width: 100%;
 }
@@ -106,4 +107,8 @@ tr:nth-child(odd) {
 
 #title {
   font-size: 50px;
+}
+
+#render_investments {
+  width: 100%;
 }

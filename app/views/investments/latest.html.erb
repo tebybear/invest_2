@@ -2,11 +2,11 @@
 <h1>Latest Investments:</h1>
 <table>
   <tr>
-    <th align="left">Fund:</th>
-    <th align="left">Quantity:</th>
-    <th align="left">Price:</th>
-    <th align="left">Created By:</th>
-    <th align="left">Date Created:</th>
+    <th>Fund:</th>
+    <th>Quantity:</th>
+    <th>Price:</th>
+    <th>Created By:</th>
+    <th>Date Created:</th>
   </tr>
   <% @latest_investments.each do |investment| %>
     <tr>
@@ -23,5 +23,8 @@
 <br>
 </div>
 
-<div id="render_investments" class="center-horizontal block">
+<div class="center-horizontal block">
+  <table id="render_investments">
+  </table>
+  <br>
 </div>
