@@ -10,7 +10,13 @@
     <% @users.order(created_at: :desc).each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= button_to "View", user_path(user), {method: :get, id: "view-profile"} %></td>
+        <td><%= button_to "View", user_path(user), {method: :get, id: "view-profile"} %>
+          <ul>
+            <% user.funds.each do |fund| %>
+              <%= fund.symbol %><br>
+            <% end %>
+          </ul>
+        </td>
       </tr>
       <% end %>
   </table>

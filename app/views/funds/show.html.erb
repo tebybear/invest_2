@@ -1,1 +1,11 @@
-<%= @fund.symbol %>
+<div class="center-horizontal block">
+  <h1><%= @fund.symbol %></h1>
+
+  <h3>Users with this fund:</h3>
+  <% @fund.users.uniq.each do |user| %>
+    <ul>
+      <li><%= user.username %></li>
+    </ul>
+  <% end %>
+  <br><br>
+</div>
