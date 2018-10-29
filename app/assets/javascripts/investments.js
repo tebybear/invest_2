@@ -3,10 +3,11 @@ $(function(){
     e.preventDefault();
     $.get("/investments").success(function(json) {
       $('#load_investments').hide();
+      $('#load_investments').after(
+        '<h1>All Investments</h1>'
+      )
       $('#render_investments').append(
-        `<h1>All Investments</h1>
-        <table>
-          <tr>
+        `<tr>
             <th>Fund:</th>
             <th>Quantity:</th>
             <th>Price:</th>
@@ -15,7 +16,6 @@ $(function(){
           </tr>`
         )
       json.forEach(function(investment) {
-        console.log(investment);
         $('#render_investments').append(
           `<tr>
               <td>${investment.fund.symbol}</td>
@@ -23,8 +23,7 @@ $(function(){
               <td>${investment.price}</td>
               <td>${investment.user.username}</td>
               <td>${investment.created_at}</td>
-            </tr>
-          </table>`
+            </tr>`
         )
       });
     });
