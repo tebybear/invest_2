@@ -4,7 +4,11 @@ class InvestmentsController < ApplicationController
   def index
     @latest_investments = Investment.latest
     @investments = Investment.all
-    render :json => @investments, status: 200, :layout => false
+    # render :json => @investments, status: 200, :layout => false
+    respond_to do |f|
+      f.html { render 'investments/index'}
+      f.json { render :json=> @investments, :layout => false }
+    end
   end
 
   def new
