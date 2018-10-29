@@ -1,3 +1,4 @@
+//Load All Investments via Ajax on button click on latest investments page.
 $(function(){
   $('#load_investments').on('click', function(e) {
     e.preventDefault();
@@ -29,3 +30,5 @@ $(function(){
     });
   });
 });
+
+//Render new investments via Ajax after submission on user show page.

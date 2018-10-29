@@ -5,6 +5,16 @@
     <h1><%= @user.name %></h1>
   <% end %>
 
+  <% if !new_user(@user) %>
+  <h2>Your Funds:</h2>
+    <ul>
+      <% @user.funds.uniq.each do |fund| %>
+      <li><%= fund.symbol %></li>
+      <% end %>
+    </ul>
+  <br><br>
+  <% end %>
+
   <% if new_user(@user) %>
     <p>You don't have any investments yet. To begin, explore our funds to find your first investment or create your own through the menu below.</p>
     <br><br>
@@ -34,14 +44,11 @@
     </table>
     <br><br>
   <% end %>
+</div>
 
-<% if !new_user(@user) %>
-<h2>Your Funds:</h2>
-  <ul>
-    <% @user.funds.uniq.each do |fund| %>
-    <li><%= fund.symbol %></li>
-    <% end %>
-  </ul>
-<br><br>
-<% end %>
+<div class="center-horizontal block">
+  <h1>New Investment:</h1>
+  <div>
+    <%=render partial: 'investments/form', locals: {user: @user, investment: @investment}%>
+  </div>
 </div>

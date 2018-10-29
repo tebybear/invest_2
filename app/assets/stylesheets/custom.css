@@ -51,7 +51,7 @@ label, p {
 .float-button {
   padding: 8px 20px;
   float: left;
-  width: 14.25%;
+  width: 16.65%;
   font-size: 30px;
   border-radius: 0px;
 }
@@ -95,7 +95,7 @@ tr:nth-child(odd) {
 
 
 .new_investment {
-  line-height: 30px;
+  line-height: 25px;
 }
 
 
