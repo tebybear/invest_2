@@ -5,10 +5,6 @@ class InvestmentsController < ApplicationController
     @latest_investments = Investment.latest
     @investments = Investment.all
     render :json => @investments, status: 200, :layout => false
-    # respond_to do |format|
-    #   format.json {render json: @investments, :layout => false}
-    #   format.html {render 'investments/index', :layout => false}
-    # end
   end
 
   def new
@@ -20,7 +16,7 @@ class InvestmentsController < ApplicationController
     @user = User.find(params[:user_id])
     @investment = @user.investments.build(investment_params)
     if @investment.save
-      redirect_to user_path(@user)
+      render 'investments/create', :layout => false
     else
       render 'new'
     end

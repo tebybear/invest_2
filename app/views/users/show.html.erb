@@ -4,7 +4,9 @@
   <% else %>
     <h1><%= @user.name %></h1>
   <% end %>
+</div>
 
+<div class="center-horizontal block">
   <% if !new_user(@user) %>
   <h2>Your Funds:</h2>
     <ul>
@@ -14,7 +16,9 @@
     </ul>
   <br><br>
   <% end %>
+</div>
 
+<div class="center-horizontal block">
   <% if new_user(@user) %>
     <p>You don't have any investments yet. To begin, explore our funds to find your first investment or create your own through the menu below.</p>
     <br><br>
@@ -41,6 +45,8 @@
         <% end %>
       </tr>
       <% end %>
+      <div id="render_new_investment">
+      </div>
     </table>
     <br><br>
   <% end %>

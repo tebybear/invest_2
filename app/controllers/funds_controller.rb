@@ -13,6 +13,10 @@ class FundsController < ApplicationController
   #   @top_funds = Fund.top_funds
   # end
 
+  def show
+    @fund = Fund.find_by(id: params[:id])
+  end
+
   private
 
   def fund_params

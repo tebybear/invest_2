@@ -2,7 +2,7 @@
 $(function(){
   $('#load_investments').on('click', function(e) {
     e.preventDefault();
-    $.get("/investments").success(function(json) {
+    $.get("/investments").done(function(json) {
       $('#load_investments').hide();
       $('#load_investments').after(
         '<h1>All Investments</h1>'
@@ -30,5 +30,3 @@ $(function(){
     });
   });
 });
-
-//Render new investments via Ajax after submission on user show page.
