@@ -15,6 +15,8 @@ class FundsController < ApplicationController
 
   def show
     @fund = Fund.find_by(id: params[:id])
+    respond_to do |format|
+      format.json {render json: @fund, status: 200}
   end
 
   private

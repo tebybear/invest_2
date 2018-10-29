@@ -1,13 +1,9 @@
-//Render new investments via Ajax after submission on user show page.
+// Render user's funds via Ajax on users index page
+
 $(function() {
-  $('#new_investment').on("submit", function(e) {
+  $("view-profile").on("submit", function(e) {
     e.preventDefault();
-    let formData = $(this).serialize();
-    $.post(`/users/${this.user_id}/investments`, formData).done(function(data) {
-      // $('render_new_investment').append(data);
-      console.log(data);
-    });
+    var id = $(this).data("id");
+    console.log(id);
   });
 });
-
-// "render_new_investment"

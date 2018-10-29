@@ -1,13 +1,13 @@
 //Load All Investments via Ajax on button click on latest investments page.
 $(function(){
-  $('#load_investments').on('click', function(e) {
+  $('#load-investments').on('click', function(e) {
     e.preventDefault();
     $.get("/investments" + ".json").done(function(data) {
-      $('#load_investments').hide();
-      $('#load_investments').after(
+      $('#load-investments').hide();
+      $('#load-investments').after(
         '<h1>All Investments</h1>'
       )
-      $('#render_investments').append(
+      $('#render-investments').append(
         `<tr>
             <th>Fund:</th>
             <th>Quantity:</th>
@@ -17,7 +17,7 @@ $(function(){
           </tr>`
         )
       data.forEach(function(investment) {
-        $('#render_investments').append(
+        $('#render-investments').append(
           `<tr>
               <td>${investment.fund.symbol}</td>
               <td>${investment.quantity}</td>
@@ -34,7 +34,7 @@ $(function(){
 
 //Render new investments via Ajax after submission on user show page.
 $(function() {
-  $('#new_investment').on("submit", function(e) {
+  $('form#new_investment').on("submit", function(e) {
     e.preventDefault();
     let formData = $(this).serialize();
     $.post(`/users/${this.user_id}/investments`, formData).done(function(data) {

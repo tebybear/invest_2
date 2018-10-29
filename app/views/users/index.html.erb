@@ -5,12 +5,12 @@
   <table>
     <tr>
       <th>User</th>
-      <th>Profile</th>
+      <th>Funds</th>
     </tr>
     <% @users.order(created_at: :desc).each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= button_to "View", user_path(user), method: :get %></td>
+        <td><%= button_to "View", user_path(user), {method: :get, id: "view-profile"} %></td>
       </tr>
       <% end %>
   </table>
