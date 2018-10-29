@@ -41,7 +41,7 @@
         <td><%= investment.price%></td>
         <td><%= investment.created_at.strftime("%m/%d/%Y") %></td>
         <% if @user == current_user %>
-          <td><%= button_to "Sell", user_investment_path(current_user, investment), method: :delete, data: {confirm: "You sure?"} %>
+          <td><%= button_to "Sell", user_investment_path(current_user, investment), method: :delete, data: {confirm: "Please confirm deletion:"} %>
         <% end %>
       </tr>
       <% end %>

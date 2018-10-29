@@ -2,7 +2,7 @@
 $(function(){
   $('#load_investments').on('click', function(e) {
     e.preventDefault();
-    $.get("/investments").done(function(json) {
+    $.get("/investments" + ".json").done(function(data) {
       $('#load_investments').hide();
       $('#load_investments').after(
         '<h1>All Investments</h1>'
@@ -16,7 +16,7 @@ $(function(){
             <th>Date Created:</th>
           </tr>`
         )
-      json.forEach(function(investment) {
+      data.forEach(function(investment) {
         $('#render_investments').append(
           `<tr>
               <td>${investment.fund.symbol}</td>
@@ -27,6 +27,19 @@ $(function(){
             </tr>`
         )
       });
+    });
+  });
+});
+
+
+//Render new investments via Ajax after submission on user show page.
+$(function() {
+  $('#new_investment').on("submit", function(e) {
+    e.preventDefault();
+    let formData = $(this).serialize();
+    $.post(`/users/${this.user_id}/investments`, formData).done(function(data) {
+      // $('render_new_investment').append(data);
+      console.log(data);
     });
   });
 });

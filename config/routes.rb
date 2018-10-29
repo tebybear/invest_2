@@ -10,9 +10,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :investments, except: [:index]
+    resources :funds, only: [:show]
   end
 
-  resources :funds
+  resources :funds, only: [:index]
   resources :investments, only: [:index]
 
   # get '/funds/top_funds' => 'funds#top_funds', as: 'top_funds'
