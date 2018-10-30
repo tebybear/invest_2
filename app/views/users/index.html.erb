@@ -10,7 +10,7 @@
     <% @users.order(created_at: :desc).each do |user| %>
       <tr>
         <td id="<% user.id %>"><%= user.username %></td>
-        <td><%= link_to "View", user_path(user), class: 'view-profile', :data => { 'data-id' => "#{user.id}"} %>
+        <td><%= link_to "View", user_path(user), class: 'view-profile', :data => { 'id' => "#{user.id}"} %>
           <ul>
             <% user.funds.each do |fund| %>
               <%= fund.symbol %><br>
