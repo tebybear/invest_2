@@ -8,11 +8,12 @@
     <br>
   </div>
 
+  <br>
   <div class="center-horizontal block">
     <h1>All Funds</h1>
     <ul>
     <% @funds.each do |fund| %>
-      <li><%= fund.symbol %></li>
+      <li><%= link_to "#{fund.symbol}", fund_path(fund) %></li>
       <% end %>
     </ul>
     <br><br>

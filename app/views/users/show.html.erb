@@ -6,6 +6,7 @@
   <% end %>
 </div>
 
+<br>
 <div class="center-horizontal block">
   <% if !new_user(@user) %>
   <h2>Your Funds:</h2>
@@ -20,8 +21,9 @@
 
 <div class="center-horizontal block">
   <% if new_user(@user) %>
+  <br>
     <p>You don't have any investments yet. To begin, explore our funds to find your first investment or create your own below.</p>
-    <br><br>
+    <br>
   <% else %>
     <h2>Your Investments:</h2>
     <table>
@@ -52,8 +54,8 @@
   <% end %>
 </div>
 
+<br>
 <div class="center-horizontal block">
-  <h1>New Investment:</h1>
   <div>
     <%=render partial: 'investments/form', locals: {user: @user, investment: @investment}%>
   </div>

@@ -30,7 +30,7 @@ class User {
         $("#user-" + this.id).append(symbol + "<br>");
       });
     } else {
-        $("#user-" + this.id).append("No Funds Yet.");
+        $("#user-" + this.id).append("No Funds Yet");
     }
   }
 }
