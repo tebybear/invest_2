@@ -2,8 +2,10 @@
     <h1>Top Funds</h1>
     <ul>
     <% @top_funds.each do |fund| %>
-      <li><%= link_to "#{fund.symbol}", fund_path(fund) %></li>
-      <% end %>
+      <li><%= link_to "#{fund.symbol}", fund_path(fund), class: 'view-fund', :data => { 'id' => "#{fund.id}"} %>
+        <div id="fund-<%= fund.id %>">
+        </div>
+    <% end %>
     </ul>
     <br>
   </div>
