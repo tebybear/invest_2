@@ -25,8 +25,12 @@ class User {
       return fund.symbol;
     });
     let uniqueFunds = [...new Set(userFunds)]
-    uniqueFunds.forEach((symbol) => {
-      $("#user-" + this.id).append(symbol + "<br>");
-    });
+    if (uniqueFunds.length > 0) {
+      uniqueFunds.forEach((symbol) => {
+        $("#user-" + this.id).append(symbol + "<br>");
+      });
+    } else {
+        $("#user-" + this.id).append("No Funds Yet.");
+    }
   }
 }
