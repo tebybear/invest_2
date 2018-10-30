@@ -9,12 +9,9 @@
     </tr>
     <% @users.order(created_at: :desc).each do |user| %>
       <tr>
-        <td id="<% user.id %>"><%= user.username %></td>
+        <td><%= user.username %></td>
         <td><%= link_to "View", user_path(user), class: 'view-profile', :data => { 'id' => "#{user.id}"} %>
-          <ul class="render-funds">
-            <!-- <% user.funds.each do |fund| %>
-              <%= fund.symbol %><br>
-            <% end %> -->
+          <ul id="user-<%= user.id %>">
           </ul>
         </td>
       </tr>

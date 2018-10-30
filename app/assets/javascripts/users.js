@@ -1,12 +1,14 @@
 //Render user's funds on users index page.
-
 $(function() {
   $("a.view-profile").on("click", function(e) {
     e.preventDefault();
-    let id = $(this).data("id");
+    var id = $(this).data("id");
     $.get("/users/" + id + ".json", function(data) {
-      user = new User(data);
-      console.log(user);
+      let user = new User(data);
+      user.showFunds();
+      // data.funds.forEach(function(fund){
+      //   $("#user-" + id).append(fund.symbol + "<br>");
+      // });
     });
   });
 });
@@ -20,7 +22,13 @@ class User {
     this.funds = attributes.funds;
     this.investments = attributes.investments;
   }
-  // renderFunds() {
-  //   $("ul.render-funds").append(this.funds);
-  // }
+  showFunds(){
+    let userFunds = this.funds.map(function(fund) {
+      return fund.symbol;
+    });
+    let uniqueFunds = [...new Set(userFunds)]
+    uniqueFunds.forEach((symbol) => {
+      $("#user-" + this.id).append(symbol + "<br>");
+    });
+  }
 }
