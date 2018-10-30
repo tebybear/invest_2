@@ -20,8 +20,11 @@ class InvestmentsController < ApplicationController
     @user = User.find(params[:user_id])
     @investment = @user.investments.build(investment_params)
     if @investment.save
-      # render 'investments/create', :layout => false
-      redirect_to user_path(@user)
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.json { render :json => @investment }
+    end
+      # redirect_to user_path(@user)
     else
       render 'new'
     end
