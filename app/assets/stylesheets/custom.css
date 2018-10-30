@@ -65,9 +65,14 @@ ul {
   line-height: 1.35;
 }
 
-a {
+button_to {
   color: #454545;
   text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 table, th, td {
@@ -94,9 +99,13 @@ tr:nth-child(odd) {
 }
 
 
-.new_investment {
+.new-investment {
   line-height: 25px;
 }
+
+/* .view-profile {
+  color: #f7f7f7;
+} */
 
 
 #login {

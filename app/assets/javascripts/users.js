@@ -1,9 +1,9 @@
-// Render user's funds via Ajax on users index page
+//Render user's funds on users index page.
 
 $(function() {
-  $("view-profile").on("submit", function(e) {
+  $("a.view-profile").on("click", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
-    console.log(id);
+    console.log(this);
   });
 });
