@@ -11,10 +11,10 @@
       <tr>
         <td id="<% user.id %>"><%= user.username %></td>
         <td><%= link_to "View", user_path(user), class: 'view-profile', :data => { 'id' => "#{user.id}"} %>
-          <ul>
-            <% user.funds.each do |fund| %>
+          <ul class="render-funds">
+            <!-- <% user.funds.each do |fund| %>
               <%= fund.symbol %><br>
-            <% end %>
+            <% end %> -->
           </ul>
         </td>
       </tr>
