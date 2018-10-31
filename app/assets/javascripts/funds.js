@@ -12,6 +12,7 @@ $(function(){
 //User Model Object
 class Fund {
   constructor(attributes) {
+    this.id = attributes.id;
     this.symbol = attributes.symbol;
     this.users = attributes.users;
     this.investments = attributes.investments;

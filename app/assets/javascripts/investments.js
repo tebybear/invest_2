@@ -38,9 +38,23 @@ $(function() {
     e.preventDefault();
     var id = $("input#investment_user_id").val();
     let formData = $(this).serialize();
-    $.post("/users/" + id + "/investments", formData).done(function(data) {
-      // $('render_new_investment').append(data);
-      // console.log(data);
+    $.post("/users/" + id + "/investments" + ".json", formData).done(function(investment) {
+      $('td#investment-fund-symbol').text(investment.fund.symbol);
+      $('td#investment-quantity').text(investment.quantity);
+      $('td#investment-price').text(investment.price);
+      $('td#investment-created-at').text(investment.created_at);
+      // console.log(investment);
     });
   });
 });
+
+//Investment Model Object
+class Investment {
+  constructor(attributes) {
+    this.id = attributes.id;
+    this.quantity = attributes.quantity;
+    this.created_at = attributes.created_at;
+    this.user = attributes.user;
+    this.fund = attributes.fund;
+  }
+}
