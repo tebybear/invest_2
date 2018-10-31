@@ -7,15 +7,7 @@ $(function(){
       $('#load-investments').after(
         '<h1>All Investments</h1>'
       )
-      $('#render-investments').append(
-        `<tr>
-            <th>Fund:</th>
-            <th>Quantity:</th>
-            <th>Price:</th>
-            <th>Created By:</th>
-            <th>Date Created:</th>
-          </tr>`
-        )
+      renderHeader();
       data.forEach(function(investment) {
         $('#render-investments').append(
           `<tr>
@@ -31,6 +23,18 @@ $(function(){
   });
 });
 
+function renderHeader(){
+  $('#render-investments').append(
+    `<tr>
+        <th>Fund:</th>
+        <th>Quantity:</th>
+        <th>Price:</th>
+        <th>Created By:</th>
+        <th>Date Created:</th>
+      </tr>`
+    )
+}
+
 
 //Render new investments via Ajax after submission on user show page.
 $(function() {
@@ -38,11 +42,12 @@ $(function() {
     e.preventDefault();
     var id = $("input#investment_user_id").val();
     let formData = $(this).serialize();
-    $.post("/users/" + id + "/investments" + ".json", formData).done(function(investment) {
-      $('td#investment-fund-symbol').text(investment.fund.symbol);
+    $.post("/users/" + id + "/investments" + ".json", formData).done(function(data) {
+      let investment = new Investment(data);
+      $('td#investment-fund-symbol').text(investment.fund);
       $('td#investment-quantity').text(investment.quantity);
       $('td#investment-price').text(investment.price);
-      $('td#investment-created-at').text(investment.created_at);
+      $('td#investment-created-at').text(investment.formattedDate());
       // console.log(investment);
     });
   });
@@ -53,8 +58,12 @@ class Investment {
   constructor(attributes) {
     this.id = attributes.id;
     this.quantity = attributes.quantity;
+    this.price = attributes.price;
     this.created_at = attributes.created_at;
     this.user = attributes.user;
-    this.fund = attributes.fund;
+    this.fund = attributes.fund.symbol;
+  }
+  formattedDate(){
+    return moment(this.created_at).subtract(10, 'days').calendar();
   }
 }
