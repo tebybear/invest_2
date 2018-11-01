@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')
 
-  resources :users do
+  resources :users, except: [:destroy] do
     resources :investments, except: [:index]
   end
 

@@ -48,7 +48,8 @@ $(function() {
       $('td#investment-quantity').text(investment.quantity);
       $('td#investment-price').text(investment.price);
       $('td#investment-created-at').text(investment.formattedDate());
-      // console.log(investment);
+      investment.deleteButton();
+      console.log(investment);
     });
   });
 });
@@ -65,5 +66,8 @@ class Investment {
   }
   formattedDate(){
     return moment(this.created_at).subtract(10, 'days').calendar();
+  }
+  deleteButton(){
+    $('td#investment-destroy').append(`<%= button_to "Sell", user_investment_path(${this.user}, ${this.id}), method: :delete, data: {confirm: "Please confirm deletion:"} %>`)
   }
 }
