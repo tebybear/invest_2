@@ -2,7 +2,7 @@
   <h1 id="fund-symbol"><%= @fund.symbol %></h1>
   <p id="fund-company"><strong>Company</strong>: <%= @quote["companyName"] %></p>
   <p id="fund-sector"><strong>Sector</strong>: <%= @quote["sector"] %></p>
-  <p id="fund-price"><strong>Latest Price</strong>: $<%= @quote["latestPrice"] %></p>
+  <p id="fund-price"><strong>Latest Price</strong>: <%= @quote["latestPrice"] %></p>
   <p id="fund-users">Users With This Fund: <%= @fund.users.uniq.length %></p>
   <p id="fund-investments">Investments With This Fund: <%= @fund.investments.length %></p>
   <br><br>

@@ -33,11 +33,11 @@ class InvestmentsController < ApplicationController
   def destroy
     @investment = Investment.find_by(id: params[:id])
     @investment.destroy
-    # redirect_to user_path(current_user)
-    respond_to do |f|
-      f.html { redirect_to user_path(current_user) }
-      f.json { render :layout => false }
-    end
+    redirect_to user_path(current_user)
+    # respond_to do |f|
+    #   f.html { redirect_to user_path(current_user) }
+    #   f.json { render :layout => false }
+    # end
   end
 
   def latest

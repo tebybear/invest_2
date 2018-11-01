@@ -20,7 +20,11 @@ class FundsController < ApplicationController
     url = "https://api.iextrading.com/1.0/stock/#{symbol}/quote"
     uri = URI(url)
     result = Net::HTTP.get(uri)
-    @quote = JSON.parse(result)
+    if result != "Unknown symbol"
+      @quote = JSON.parse(result)
+    else
+      @quote = "N/A"
+    end
 
     respond_to do |f|
       f.html { render 'funds/show' }
