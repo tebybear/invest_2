@@ -43,8 +43,19 @@ $(function() {
     let formData = $(this).serialize();
     $.post("/users/" + id + "/investments" + ".json", formData).done(function(data) {
       let investment = new Investment(data);
-      toggleVisibility();
-      renderInvestmentRow();
+      $("tr#render-new-investment").show();
+      $('li#create-new-fund').show();
+
+      $('td#investment-fund-symbol').text(investment.fund);
+      $('td#investment-quantity').text(investment.quantity);
+      $('td#investment-price').text(investment.price);
+      $('td#investment-created-at').text(investment.formattedDate());
+      $('li#create-new-fund').text(investment.fund);
+
+      $('input#investment_quantity').val('');
+      $('input#investment_price').val('');
+      $('select#investment_fund_id').val([]);
+      $('input#investment_new_fund_symbol').val('');
       // console.log(investment);
     });
   });
@@ -64,17 +75,4 @@ class Investment {
   formattedDate(){
     return moment(this.created_at).subtract(10, 'days').calendar();
   }
-}
-
-function toggleVisibility(){
-  $("tr#render-new-investment").show();
-  $('li#create-new-fund').show();
-}
-
-function renderInvestmentRow(){
-  $('td#investment-fund-symbol').text(investment.fund);
-  $('td#investment-quantity').text(investment.quantity);
-  $('td#investment-price').text(investment.price);
-  $('td#investment-created-at').text(investment.formattedDate());
-  $('li#create-new-fund').text(investment.fund);
 }
