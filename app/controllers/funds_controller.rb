@@ -22,11 +22,11 @@ class FundsController < ApplicationController
     result = Net::HTTP.get(uri)
     @quote = JSON.parse(result)
 
-    # respond_to do |f|
-    #   f.html { render 'funds/show' }
-    #   f.json { render :json=>  @fund, :layout => false }
-    # end
-    render 'show'
+    respond_to do |f|
+      f.html { render 'funds/show' }
+      f.json { render :json=>  @fund, :layout => false }
+    end
+    # render 'show'
   end
 
   private
