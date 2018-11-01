@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @investment = Investment.new
+    @investment = @user.investments.build
     respond_to do |f|
       f.html { render 'users/show' }
       f.json { render :json=>  @user, :layout => false }
