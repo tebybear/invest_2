@@ -28,6 +28,6 @@
     <%= fund_fields.text_field :symbol %>
   <% end %>
   <br><br>
-  <%=f.submit "Submit", :class => "button"%><br>
+  <%=f.submit "Submit", :class => "button", data: { disable_with: false }%><br>
 <%end%>
 <br><br>
