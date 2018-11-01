@@ -14,6 +14,7 @@
       <% @user.funds.uniq.each do |fund| %>
       <li><%= fund.symbol %></li>
       <% end %>
+      <li id="create-new-fund"></li>
     </ul>
   <br><br>
   <% end %>
@@ -53,7 +54,7 @@
         <td id="investment-price"></td>
         <td id="investment-created-at"></td>
         <% if @user == current_user %>
-          <td><%= button_to "Sell", user_investment_path(current_user, current_user.investments.last), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:"} %>
+          <td id="investment-delete"><%= button_to "Sell", user_investment_path(current_user, current_user.investments.last), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:"} %>
         <% end %>
       </tr>
     </table>

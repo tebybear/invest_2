@@ -43,32 +43,19 @@ $(function() {
     let formData = $(this).serialize();
     $.post("/users/" + id + "/investments" + ".json", formData).done(function(data) {
       let investment = new Investment(data);
+      $("tr#render-new-investment").show();
+      $('li#create-new-fund').show();
+
       $('td#investment-fund-symbol').text(investment.fund);
       $('td#investment-quantity').text(investment.quantity);
       $('td#investment-price').text(investment.price);
       $('td#investment-created-at').text(investment.formattedDate());
-      investment.deleteButton();
+      $('li#create-new-fund').text(investment.fund);
+      // investment.deleteButton();
       // console.log(investment);
     });
   });
 });
-
-//Delete investments via Ajax
-// $(function() {
-//   $('input#delete-investment').on("submit", function(e) {
-//     e.preventDefault();
-//     var userId = $(this).data("userid");
-//     var investmentId = $(this).data("investmentid");
-//     $.ajax({
-//       url: `/users/${userId}/investments/${investmentId}`,
-//       type: 'DELETE',
-//       success: function(result) {
-//         alert("Submit!")
-//         // $("li#<%= @user_id %>").remove();
-//       }
-//     });
-//   });
-// });
 
 
 //Investment Model Object
