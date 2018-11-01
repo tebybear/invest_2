@@ -10,7 +10,7 @@
 <div class="center-horizontal block">
   <% if !new_user(@user) %>
   <h2>Your Funds:</h2>
-    <ul>
+    <ul class="multiple-columns">
       <% @user.funds.uniq.each do |fund| %>
       <li><%= fund.symbol %></li>
       <% end %>

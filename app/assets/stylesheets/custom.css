@@ -56,6 +56,14 @@ label, p {
   border-radius: 0px;
 }
 
+.multiple-columns {
+  -webkit-column-count: 3; -webkit-column-gap:20px;
+  -moz-column-count:3; -moz-column-gap:20px;
+  -o-column-count: 3; -o-column-gap:20px;
+  column-count: 3; column-gap:20px;
+  list-style-position: inside;
+}
+
 
 ul {
   padding:0;
@@ -97,6 +105,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background: #f7f7f7;
 }
+
 
 
 #login {

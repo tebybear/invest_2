@@ -43,15 +43,8 @@ $(function() {
     let formData = $(this).serialize();
     $.post("/users/" + id + "/investments" + ".json", formData).done(function(data) {
       let investment = new Investment(data);
-      $("tr#render-new-investment").show();
-      $('li#create-new-fund').show();
-
-      $('td#investment-fund-symbol').text(investment.fund);
-      $('td#investment-quantity').text(investment.quantity);
-      $('td#investment-price').text(investment.price);
-      $('td#investment-created-at').text(investment.formattedDate());
-      $('li#create-new-fund').text(investment.fund);
-      // investment.deleteButton();
+      toggleVisibility();
+      renderInvestmentRow();
       // console.log(investment);
     });
   });
@@ -71,7 +64,17 @@ class Investment {
   formattedDate(){
     return moment(this.created_at).subtract(10, 'days').calendar();
   }
-  deleteButton(){
-    $('td#investment-destroy').text('<%= button_to "Sell", user_investment_path(${this.user}, ${this.id}), method: :delete, data: {confirm: "Please confirm deletion:"} %>')
-  }
+}
+
+function toggleVisibility(){
+  $("tr#render-new-investment").show();
+  $('li#create-new-fund').show();
+}
+
+function renderInvestmentRow(){
+  $('td#investment-fund-symbol').text(investment.fund);
+  $('td#investment-quantity').text(investment.quantity);
+  $('td#investment-price').text(investment.price);
+  $('td#investment-created-at').text(investment.formattedDate());
+  $('li#create-new-fund').text(investment.fund);
 }
