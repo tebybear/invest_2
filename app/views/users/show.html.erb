@@ -37,13 +37,13 @@
         <% end %>
       </tr>
     <% @user.investments.order(created_at: :asc).each do |investment| %>
-      <tr>
+      <tr id="#user-<%= @user.id %>-investment-<%= investment.id %>">
         <td><%= investment.fund.symbol%></td>
         <td><%= investment.quantity%></td>
         <td><%= investment.price%></td>
         <td><%= investment.created_at.strftime("%m/%d/%Y") %></td>
         <% if @user == current_user %>
-          <td><%= button_to "Sell", user_investment_path(current_user, investment), method: :delete, data: {confirm: "Please confirm deletion:"} %>
+          <td><%= button_to "Sell", user_investment_path(current_user, investment), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:", 'userId' => "#{@user.id}", 'investmentId' => "#{investment.id}"} %>
         <% end %>
       </tr>
       <% end %>
@@ -52,7 +52,9 @@
         <td id="investment-quantity"></td>
         <td id="investment-price"></td>
         <td id="investment-created-at"></td>
-        <td id="investment-destroy"></td>
+        <% if @user == current_user %>
+          <td><%= button_to "Sell", user_investment_path(current_user, current_user.investments.last), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:"} %>
+        <% end %>
       </tr>
     </table>
     <br><br>

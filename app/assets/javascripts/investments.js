@@ -35,7 +35,6 @@ function renderHeader(){
     )
 }
 
-
 //Render new investments via Ajax after submission on user show page.
 $(function() {
   $('form#new_investment').on("submit", function(e) {
@@ -49,10 +48,28 @@ $(function() {
       $('td#investment-price').text(investment.price);
       $('td#investment-created-at').text(investment.formattedDate());
       investment.deleteButton();
-      console.log(investment);
+      // console.log(investment);
     });
   });
 });
+
+//Delete investments via Ajax
+// $(function() {
+//   $('input#delete-investment').on("submit", function(e) {
+//     e.preventDefault();
+//     var userId = $(this).data("userid");
+//     var investmentId = $(this).data("investmentid");
+//     $.ajax({
+//       url: `/users/${userId}/investments/${investmentId}`,
+//       type: 'DELETE',
+//       success: function(result) {
+//         alert("Submit!")
+//         // $("li#<%= @user_id %>").remove();
+//       }
+//     });
+//   });
+// });
+
 
 //Investment Model Object
 class Investment {
@@ -68,6 +85,6 @@ class Investment {
     return moment(this.created_at).subtract(10, 'days').calendar();
   }
   deleteButton(){
-    $('td#investment-destroy').append(`<%= button_to "Sell", user_investment_path(${this.user}, ${this.id}), method: :delete, data: {confirm: "Please confirm deletion:"} %>`)
+    $('td#investment-destroy').text('<%= button_to "Sell", user_investment_path(${this.user}, ${this.id}), method: :delete, data: {confirm: "Please confirm deletion:"} %>')
   }
 }

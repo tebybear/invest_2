@@ -16,20 +16,18 @@ class FundsController < ApplicationController
   def show
     @fund = Fund.find_by(id: params[:id])
     symbol = @fund.symbol
+
+    url = "https://api.iextrading.com/1.0/stock/#{symbol}/quote"
+    uri = URI(url)
+    result = Net::HTTP.get(uri)
+    @quote = JSON.parse(result)
+
     # respond_to do |f|
     #   f.html { render 'funds/show' }
     #   f.json { render :json=>  @fund, :layout => false }
     # end
-    url = "https://api.iextrading.com/1.0/stock/#{symbol}/stats"
-    uri = URI(url)
-    result = Net::HTTP.get(uri)
-    @stats = JSON.parse(result)
     render 'show'
   end
-
-  # def top_funds
-  #   @top_funds = Fund.top_funds
-  # end
 
   private
 

@@ -3,8 +3,11 @@
 //   $("a.view-fund").on("click", function(e) {
 //     e.preventDefault();
 //     var fundId = $(this).data("id");
+//     console.log(fundId);
 //     $.get("/funds/" + fundId + ".json", function(data) {
-//       console.log("Hi");
+//       // $("div#id-" + fundId).append(data)
+//       $("p#fund-company").text = "Hi";
+//       console.log(data.investments.length);
 //     });
 //   });
 // });
@@ -16,11 +19,5 @@ class Fund {
     this.symbol = attributes.symbol;
     this.users = attributes.users;
     this.investments = attributes.investments;
-  }
-  totalUsers(){
-    return this.users.length;
-  }
-  totalInvestments(){
-    return this.investments.length;
   }
 }

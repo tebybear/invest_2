@@ -2,6 +2,8 @@
   <h1><%= @fund.symbol %></h1>
   <!-- <p>Users: <%= @fund.users.uniq.length %></p>
   <p>Investments: <%= @fund.investments.length %></p> -->
-  <p><%= @stats["companyName"] %></p>
+  <p>Company: <%= @quote["companyName"] %></p>
+  <p>Sector: <%= @quote["sector"] %></p>
+  <p>Latest Price: <%= @quote["latestPrice"] %></p>
   <br><br>
 </div>
