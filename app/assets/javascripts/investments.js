@@ -77,6 +77,6 @@ class Investment {
     this.fund = attributes.fund.symbol;
   }
   formattedDate(){
-    return moment(this.created_at).subtract(10, 'days').calendar();
+    return moment(this.created_at).calendar();
   }
 }

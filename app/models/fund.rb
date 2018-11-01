@@ -7,4 +7,10 @@ class Fund < ApplicationRecord
 
   scope :all_funds, -> { order(symbol: :ASC)}
   scope :top_funds, -> { joins(:users).group(:fund_id).order("count(user_id) DESC").limit(5)}
+
+  before_save :uppercaseSymbol
+
+  def uppercaseSymbol
+    self.symbol.upcase!
+  end
 end

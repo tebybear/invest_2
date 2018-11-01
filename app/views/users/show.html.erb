@@ -10,7 +10,7 @@
 <div class="center-horizontal block">
   <% if !new_user(@user) %>
   <h2>Your Funds:</h2>
-    <ul class="multiple-columns">
+    <ul>
       <% @user.funds.uniq.each do |fund| %>
       <!-- <li><%= fund.symbol %></li> -->
       <li><%= link_to "#{fund.symbol}", fund_path(fund) %>
@@ -22,11 +22,11 @@
 </div>
 
 <div class="center-horizontal block">
-  <% if new_user(@user) %>
+  <!-- <%# if new_user(@user) %>
   <br>
     <p>You don't have any investments yet. To begin, explore our funds to find your first investment or create your own below.</p>
     <br>
-  <% else %>
+  <%# else %> -->
     <h2>Your Investments:</h2>
     <table>
       <tr>
@@ -54,13 +54,13 @@
         <td id="investment-quantity"></td>
         <td id="investment-price"></td>
         <td id="investment-created-at"></td>
-        <% if @user == current_user %>
+        <!-- <% if @user == current_user %>
           <td id="investment-delete"><%= button_to "Sell", user_investment_path(current_user, current_user.investments.last), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:"} %>
-        <% end %>
+        <% end %> -->
       </tr>
     </table>
     <br><br>
-  <% end %>
+  <!-- <%# end %> -->
 </div>
 
 <br>
