@@ -12,7 +12,7 @@
   <div class="center-horizontal block">
     <h1>All Funds</h1>
     <ul>
-    <% @funds.each do |fund| %>
+    <% @funds.uniq.each do |fund| %>
       <li><%= link_to "#{fund.symbol}", fund_path(fund) %></li>
       <% end %>
     </ul>

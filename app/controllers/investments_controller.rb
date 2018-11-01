@@ -22,7 +22,7 @@ class InvestmentsController < ApplicationController
     if @investment.save
       respond_to do |f|
         f.html { redirect_to user_path(@user) }
-        f.json { render :json => @investment, :layout => false }
+        f.json { render :json => @investment, :layout => false, status: 200 }
       end
       # redirect_to user_path(@user)
     else

@@ -12,7 +12,8 @@
   <h2>Your Funds:</h2>
     <ul class="multiple-columns">
       <% @user.funds.uniq.each do |fund| %>
-      <li><%= fund.symbol %></li>
+      <!-- <li><%= fund.symbol %></li> -->
+      <li><%= link_to "#{fund.symbol}", fund_path(fund) %>
       <% end %>
       <li id="create-new-fund"></li>
     </ul>

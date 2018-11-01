@@ -50,14 +50,18 @@ $(function() {
       $('td#investment-quantity').text(investment.quantity);
       $('td#investment-price').text(investment.price);
       $('td#investment-created-at').text(investment.formattedDate());
-      $('li#create-new-fund').text(investment.fund);
+      $('li#create-new-fund').append(
+        `<a href="/funds/${investment.id}">${investment.fund}</a>`
+      );
 
       $('input#investment_quantity').val('');
       $('input#investment_price').val('');
       $('select#investment_fund_id').val([]);
       $('input#investment_new_fund_symbol').val('');
       // console.log(investment);
-    });
+    }).fail(function() {
+      alert("Error. Please try again.");
+    })
   });
 });
 

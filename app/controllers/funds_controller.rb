@@ -15,7 +15,13 @@ class FundsController < ApplicationController
 
   def show
     @fund = Fund.find_by(id: params[:id])
-    symbol = @fund.symbol
+    if @fund.nil?
+      @fund = Fund.all.last
+    end
+    symbol = Fund.all.last.symbol
+    if symbol.nil?
+      symbol = @fund.symbol
+    end
 
     url = "https://api.iextrading.com/1.0/stock/#{symbol}/quote"
     uri = URI(url)
@@ -28,7 +34,7 @@ class FundsController < ApplicationController
 
     respond_to do |f|
       f.html { render 'funds/show' }
-      f.json { render :json=>  @fund, :layout => false }
+      f.json { render :json=>  @fund, :layout => false, status: 200 }
     end
     # render 'show'
   end
