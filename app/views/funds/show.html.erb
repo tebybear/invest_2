@@ -1,9 +1,16 @@
 <div class="center-horizontal block">
   <h1><%= @fund.symbol %></h1>
-  <!-- <p>Users: <%= @fund.users.uniq.length %></p>
-  <p>Investments: <%= @fund.investments.length %></p> -->
-  <p>Company: <%= @quote["companyName"] %></p>
-  <p>Sector: <%= @quote["sector"] %></p>
-  <p>Latest Price: <%= @quote["latestPrice"] %></p>
+  <p><strong>Company</strong>: <%= @quote["companyName"] %></p>
+  <p><strong>Sector</strong>: <%= @quote["sector"] %></p>
+  <p><strong>Latest Price</strong>: <%= @quote["latestPrice"] %></p>
+  <p>Users With This Fund: <%= @fund.users.uniq.length %></p>
+  <p>Investments With This Fund: <%= @fund.investments.length %></p>
   <br><br>
+
+  <div class="block two-columns">
+      <a href="#" id="previous-fund" fund_id="<%= @fund.id %>"><< Previous Fund</a>
+      <p></p>
+      <a href="#" id="next-fund" fund_id="<%= @fund.id %>">Next Fund >></a>
+  </div>
 </div>
+<br>

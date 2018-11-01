@@ -1,4 +1,4 @@
-// Render funds's show page via Ajax on funds index page.
+// Render next funds's show page via Ajax.
 // $(function(){
 //   $("a.view-fund").on("click", function(e) {
 //     e.preventDefault();
