@@ -2,7 +2,9 @@
 
 $(function(){
   var id = $("#fund-symbol").data("fundid")
-  var fundId = parseInt(id.split("-")[1])
+  if (id > 0) {
+    var fundId = parseInt(id.split("-")[1])
+  }
   console.log(fundId);
   $("a#previous-fund").on("click", function(e){
     e.preventDefault();
