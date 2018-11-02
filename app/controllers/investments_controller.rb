@@ -25,10 +25,7 @@ class InvestmentsController < ApplicationController
         f.json { render :json => @investment, :layout => false, status: 200 }
       end
     else
-      respond_to do |f|
-        f.html { render 'new'}
-        f.json { render :json =>  { @investment.errors.full_messages }, status: 422}
-      end
+      render 'new'
     end
   end
 

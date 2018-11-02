@@ -44,24 +44,14 @@ $(function() {
     let formData = $(this).serialize();
     $.post("/users/" + id + "/investments" + ".json", formData).done(function(data) {
       let investment = new Investment(data);
-      toggleDisplay();
+      console.log(investment)
       clearInputs();
 
       $('li#create-new-fund').append(
         `<a href="/funds/${investment.id}">${investment.fund}</a>`
       );
 
-      $('td#investment-fund-symbol').text(investment.fund);
-      $('td#investment-quantity').text(investment.quantity);
-      $('td#investment-price').text(investment.price);
-      $('td#investment-created-at').text(investment.formattedDate());
-      $('td#investment-delete').append(
-        `<form class="button_to" method="post" action="/users/${id}/investments/${investment.id}">
-        <input type="hidden" name="_method" value="delete">
-        <input id="delete-investment" data-confirm="Please confirm deletion:" type="submit" value="Sell">
-        <input type="hidden" name="authenticity_token" value="sHxSG0iBKs2E5Pf0bynA5hVd9dgsTjfXWlyf/XB+WXPT0ew1rNBmI7HS9VPxJaSXQWbeZxMd4I2rIJsfP9AUYQ==">
-        </form>`
-      )
+      $('table#investment-table tbody').append((investment.renderNewInvestment()));
     }).fail(function() {
       alert("Error. Please try again.")
     })
@@ -75,10 +65,6 @@ function clearInputs(){
   $('input#investment_new_fund_symbol').val('');
 }
 
-function toggleDisplay(){
-  $("tr#render-new-investment").show();
-  $('li#create-new-fund').show();
-}
 
 //Investment Model Object
 class Investment {
@@ -93,4 +79,20 @@ class Investment {
   formattedDate(){
     return moment(this.created_at).format("MM/DD/YYYY");
   }
+  deleteButton() {
+    return `<form class="button_to" method="post" action="/users/${this.user.id}/investments/${this.id}">
+        <input type="hidden" name="_method" value="delete">
+        <input id="delete-investment" data-confirm="Please confirm deletion:" type="submit" value="Sell">
+        <input type="hidden" name="authenticity_token" value="sHxSG0iBKs2E5Pf0bynA5hVd9dgsTjfXWlyf/XB+WXPT0ew1rNBmI7HS9VPxJaSXQWbeZxMd4I2rIJsfP9AUYQ==">
+      </form>`
+  };
+  renderNewInvestment(){
+    return `<tr>
+        <td class="investment-fund-symbol">${this.fund}</td>
+        <td class="investment-quantity">${this.quantity}</td>
+        <td class="investment-price">${this.price}</td>
+        <td class="investment-created-at">${this.formattedDate()}</td>
+        <td class="investment-delete">${this.deleteButton()}</td>
+      </tr>`
+  };
 }

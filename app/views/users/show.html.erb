@@ -20,15 +20,15 @@
   <% end %>
 </div>
 
-<div class="center-horizontal block">
+<!-- <div class="center-horizontal block">
   <% if @user.investments.empty? %>
     <p id="new-user-message">You don't have any investments yet. To begin, explore our funds to find your first investment or create your own below.</p>
   <% end %>
-</div>
+</div> -->
 
 <div class="center-horizontal block">
   <h2>Your Investments:</h2>
-  <table>
+  <table id="investment-table">
     <tr id="investment-headers">
       <th>Fund:</th>
       <th>Quantity:</th>
@@ -49,15 +49,8 @@
       <% end %>
     </tr>
     <% end %>
-    <tr id="render-new-investment">
-      <td id="investment-fund-symbol"></td>
-      <td id="investment-quantity"></td>
-      <td id="investment-price"></td>
-      <td id="investment-created-at"></td>
-      <% if @user == current_user %>
-        <td id="investment-delete"></td>
-      <% end %>
-    </tr>
+      <div class="render-new-investment">
+    </div>
   </table>
   <br><br>
 </div>
