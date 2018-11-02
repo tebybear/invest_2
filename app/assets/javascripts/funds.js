@@ -4,19 +4,30 @@ $(function(){
     e.preventDefault();
     fundId = $(this).data("fundid") - 1
     $.get("/funds/" + fundId + ".json", function(data) {
-      $("#fund-symbol").text(data["symbol"])
-      console.log(data);
+      $("#fund-symbol").html(data["symbol"]);
+      $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
+      $("#fund-sector").html("<strong>Sector</strong>: " + data["sector"]);
+      $("#fund-price").html("<strong>Latest Price</strong>: " + data["price"]);
+      $("#fund-users").html("Users With This Fund: " + data["users"].length);
+      $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
     });
   });
 });
 
-// <h1 id="fund-symbol"><%= @fund.symbol %></h1>
-// <p id="fund-company"><strong>Company</strong>: <%= @quote["companyName"] %></p>
-// <p id="fund-sector"><strong>Sector</strong>: <%= @quote["sector"] %></p>
-// <p id="fund-price"><strong>Latest Price</strong>: $<%= @quote["latestPrice"] %></p>
-// <p id="fund-users">Users With This Fund: <%= @fund.users.uniq.length %></p>
-// <p id="fund-investments">Investments With This Fund: <%= @fund.investments.length %></p>
-//
+$(function(){
+  $("a#next-fund").on("click", function(e){
+    e.preventDefault();
+    fundId = $(this).data("fundid") + 1
+    $.get("/funds/" + fundId + ".json", function(data) {
+      $("#fund-symbol").html(data["symbol"]);
+      $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
+      $("#fund-sector").html("<strong>Sector</strong>: " + data["sector"]);
+      $("#fund-price").html("<strong>Latest Price</strong>: " + data["price"]);
+      $("#fund-users").html("Users With This Fund: " + data["users"].length);
+      $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
+    });
+  });
+});
 
 
 //User Model Object
@@ -24,6 +35,9 @@ class Fund {
   constructor(attributes) {
     this.id = attributes.id;
     this.symbol = attributes.symbol;
+    this.company = attributes.company;
+    this.sector = attributes.sector;
+    this.price = attributes.price;
     this.users = attributes.users;
     this.investments = attributes.investments;
   }
