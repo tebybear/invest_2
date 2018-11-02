@@ -1,14 +1,12 @@
 // Render previous and next show pages for funds via Ajax.
 
 $(function(){
-  var id = $("#fund-symbol").data("fundid")
-  if (id > 0) {
-    var fundId = parseInt(id.split("-")[1])
-  }
-  console.log(fundId);
+  let fundId = parseInt($("#fund-symbol").data("fundid"))
   $("a#previous-fund").on("click", function(e){
     e.preventDefault();
-    --fundId;
+    if (fundId > 1) {
+      --fundId;
+    }
     $.get("/funds/" + fundId + ".json", function(data) {
       $("#fund-symbol").html(data["symbol"]);
       $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
@@ -17,13 +15,15 @@ $(function(){
       $("#fund-users").html("Users With This Fund: " + data["users"].length);
       $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
       $("#fund-id").text(data["id"]);
-      console.log(data)
     });
   });
 
   $("a#next-fund").on("click", function(e){
     e.preventDefault();
-    ++fundId;
+    let id = parseInt($("p#fund-id").text());
+    if (id === fundId) {
+      ++fundId;
+    }
     $.get("/funds/" + fundId + ".json", function(data) {
       $("#fund-symbol").html(data["symbol"]);
       $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
@@ -32,6 +32,8 @@ $(function(){
       $("#fund-users").html("Users With This Fund: " + data["users"].length);
       $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
       $("#fund-id").text(data["id"]);
+    }).fail(function() {
+      --fundId;
     });
   });
 

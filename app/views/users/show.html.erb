@@ -65,6 +65,8 @@
 <br>
 <div class="center-horizontal block">
   <div>
-    <%=render partial: 'investments/form', locals: {user: @user, investment: @investment}%>
+    <div class="errors">
+      <%=render partial: 'investments/form', locals: {user: @user, investment: @investment}%>
+    </div>
   </div>
 </div>

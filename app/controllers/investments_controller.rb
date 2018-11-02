@@ -24,9 +24,11 @@ class InvestmentsController < ApplicationController
         f.html { redirect_to user_path(@user) }
         f.json { render :json => @investment, :layout => false, status: 200 }
       end
-      # redirect_to user_path(@user)
     else
-      render 'new'
+      respond_to do |f|
+        f.html { render 'new'}
+        f.json { render :json =>  { @investment.errors.full_messages }, status: 422}
+      end
     end
   end
 

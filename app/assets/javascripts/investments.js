@@ -8,7 +8,6 @@ $(function(){
         '<h1>All Investments</h1>'
       )
       renderHeader();
-      console.log(data);
       data.forEach(function(item) {
         let investment = new Investment(item)
         $('#render-investments').append(
@@ -63,10 +62,8 @@ $(function() {
         <input type="hidden" name="authenticity_token" value="sHxSG0iBKs2E5Pf0bynA5hVd9dgsTjfXWlyf/XB+WXPT0ew1rNBmI7HS9VPxJaSXQWbeZxMd4I2rIJsfP9AUYQ==">
         </form>`
       )
-      console.log(investment);
-      console.log(data);
     }).fail(function() {
-      alert("Error. Please try again.");
+      alert("Error. Please try again.")
     })
   });
 });
