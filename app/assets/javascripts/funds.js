@@ -3,10 +3,9 @@
 $(function(){
   var id = $("#fund-symbol").data("fundid")
   var fundId = parseInt(id.split("-")[1])
-
+  console.log(fundId);
   $("a#previous-fund").on("click", function(e){
     e.preventDefault();
-    // let fundId = $(this).data("fundid") - 1
     --fundId;
     $.get("/funds/" + fundId + ".json", function(data) {
       $("#fund-symbol").html(data["symbol"]);
@@ -15,13 +14,13 @@ $(function(){
       $("#fund-price").html("<strong>Latest Price</strong>: " + data["price"]);
       $("#fund-users").html("Users With This Fund: " + data["users"].length);
       $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
+      $("#fund-id").text(data["id"]);
       console.log(data)
     });
   });
 
   $("a#next-fund").on("click", function(e){
     e.preventDefault();
-    // let fundId = $(this).data("fundid") + 1
     ++fundId;
     $.get("/funds/" + fundId + ".json", function(data) {
       $("#fund-symbol").html(data["symbol"]);
@@ -30,6 +29,7 @@ $(function(){
       $("#fund-price").html("<strong>Latest Price</strong>: " + data["price"]);
       $("#fund-users").html("Users With This Fund: " + data["users"].length);
       $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
+      $("#fund-id").text(data["id"]);
     });
   });
 

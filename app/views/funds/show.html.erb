@@ -7,15 +7,11 @@
   <p id="fund-users">Users With This Fund: <%= @fund.users.uniq.length %></p>
   <p id="fund-investments">Investments With This Fund: <%= @fund.investments.length %></p>
   <br><br>
+</div>
 
-  <div class="block two-columns">
-    <% if @fund.id > 1 %>
-      <a href="#" id="previous-fund" data-fundId="<%= @fund.id %>"><< Previous Fund</a>
-    <% end %>
-      <p></p>
-    <% if @fund.id < Fund.last.id %>
-      <a href="#" id="next-fund" data-fundId="<%= @fund.id %>">Next Fund >></a>
-    <% end %>
-  </div>
+<div class="block nav-pages">
+    <a href="#" id="previous-fund" data-fundId="<%= @fund.id %>"><< Previous Fund</a>
+      <p id="fund-id"><%= @fund.id %></p>
+    <a href="#" id="next-fund" data-fundId="<%= @fund.id %>">Next Fund >></a>
 </div>
 <br>

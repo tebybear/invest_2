@@ -21,11 +21,10 @@
 </div>
 
 <div class="center-horizontal block">
-  <% if current_user.investments.empty? %>
+  <% if @user.investments.empty? %>
     <p id="new-user-message">You don't have any investments yet. To begin, explore our funds to find your first investment or create your own below.</p>
   <% end %>
 </div>
-<br>
 
 <div class="center-horizontal block">
   <h2>Your Investments:</h2>
