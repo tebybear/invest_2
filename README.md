@@ -22,7 +22,7 @@ Set up the database:
 
 Seed the database:
 
-    $ rake db:migrate
+    $ rake db:seed
 
 Boot up the server:
 
