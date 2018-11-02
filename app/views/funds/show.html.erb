@@ -1,5 +1,5 @@
 <div class="center-horizontal block">
-  <h1 id="fund-symbol"><%= @fund.symbol %></h1>
+  <h1 id="fund-symbol" data-fundid="fund-<%= @fund.id %>"><%= @fund.symbol %></h1>
   <p id="fund-company"><strong>Company</strong>: <%= @fund.company %></p>
   <p id="fund-sector"><strong>Sector</strong>: <%= @fund.sector %></p>
   <p id="fund-price"><strong>Latest Price</strong>: <%= @fund.price %></p>
