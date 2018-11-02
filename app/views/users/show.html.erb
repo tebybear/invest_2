@@ -44,9 +44,7 @@
         <td><%= investment.quantity%></td>
         <td><%= investment.price%></td>
         <td><%= investment.created_at.strftime("%m/%d/%Y") %></td>
-        <% if @user == current_user %>
-          <td><%= button_to "Sell", user_investment_path(current_user, investment), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:"} %>
-        <% end %>
+        <td><%= button_to "Sell", user_investment_path(current_user, investment), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:"} %>
       </tr>
       <% end %>
       <tr id="render-new-investment">
@@ -55,9 +53,6 @@
         <td id="investment-price"></td>
         <td id="investment-created-at"></td>
         <td id="investment-delete"></td>
-        <!-- <%# if @user == current_user && @user.investments.empty? %> -->
-        <!-- <td id="investment-delete"><%= button_to "Sell", user_investment_path(current_user, current_user.investments.last), method: :delete, id:"delete-investment", data: {confirm: "Please confirm deletion:"} %></td> -->
-        <!-- <%# end %> -->
       </tr>
     </table>
     <br><br>

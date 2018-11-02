@@ -8,16 +8,27 @@ $(function(){
         '<h1>All Investments</h1>'
       )
       renderHeader();
-      data.forEach(function(investment) {
+      console.log(data);
+      data.forEach(function(item) {
+        let investment = new Investment(item)
         $('#render-investments').append(
           `<tr>
-              <td>${investment.fund.symbol}</td>
+              <td>${investment.fund}</td>
               <td>${investment.quantity}</td>
               <td>${investment.price}</td>
               <td>${investment.user.username}</td>
-              <td>${investment.created_at}</td>
+              <td>${investment.formattedDate()}</td>
             </tr>`
         )
+        // $('#render-investments').append(
+        //   `<tr>
+        //       <td>${investment.fund.symbol}</td>
+        //       <td>${investment.quantity}</td>
+        //       <td>${investment.price}</td>
+        //       <td>${investment.user.username}</td>
+        //       <td>${investment.created_at}</td>
+        //     </tr>`
+        // )
       });
     });
   });
