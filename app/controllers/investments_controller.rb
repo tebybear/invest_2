@@ -2,7 +2,13 @@ class InvestmentsController < ApplicationController
   before_action :require_signin
 
   def index
+    @latest_investments = Investment.latest
     @investments = Investment.all
+    # render :json => @investments, status: 200, :layout => false
+    respond_to do |f|
+      f.html { render 'investments/index'}
+      f.json { render :json=> @investments, :layout => false }
+    end
   end
 
   def new
@@ -14,7 +20,11 @@ class InvestmentsController < ApplicationController
     @user = User.find(params[:user_id])
     @investment = @user.investments.build(investment_params)
     if @investment.save
-      redirect_to user_path(@user)
+      respond_to do |f|
+        f.html { redirect_to user_path(@user) }
+        f.json { render :json => @investment, :layout => false, status: 200 }
+      end
+      # redirect_to user_path(@user)
     else
       render 'new'
     end
@@ -24,10 +34,15 @@ class InvestmentsController < ApplicationController
     @investment = Investment.find_by(id: params[:id])
     @investment.destroy
     redirect_to user_path(current_user)
+    # respond_to do |f|
+    #   f.html { redirect_to user_path(current_user) }
+    #   f.json { render :layout => false }
+    # end
   end
 
   def latest
     @latest_investments = Investment.latest
+    @investments = Investment.all
   end
 
   private

@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if session[:user_id]
+      redirect_to user_path(current_user)
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -21,6 +25,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @investment = @user.investments.build
+    respond_to do |f|
+      f.html { render 'users/show' }
+      f.json { render :json=>  @user, :layout => false }
+    end
   end
 
   def edit

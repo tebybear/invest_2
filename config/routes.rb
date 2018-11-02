@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')
 
-  resources :users do
-    resources :funds
-    resources :investments
+  resources :users, except: [:destroy] do
+    resources :investments, except: [:index]
   end
 
-  get '/funds/top_funds' => 'funds#top_funds', as: 'top_funds'
+  resources :funds, only: [:index, :show]
+  resources :investments, only: [:index]
+
+  # get '/funds/top_funds' => 'funds#top_funds', as: 'top_funds'
   get '/investments/latest_investments' => 'investments#latest', as: 'latest'
 end

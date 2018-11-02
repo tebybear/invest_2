@@ -1,10 +1,21 @@
-<div class="center-horizontal block">
-  <h1>All Funds</h1>
-
-  <ul>
-  <% @funds.each do |fund| %>
-    <li><%= fund.symbol %></li>
+  <div class="center-horizontal block">
+    <h1>Top Funds</h1>
+    <ul>
+    <% @top_funds.each do |fund| %>
+      <li><%= link_to "#{fund.symbol}", fund_path(fund) %>
     <% end %>
-  </ul>
-  <br><br>
+    </ul>
+    <br>
+  </div>
+
+  <br>
+  <div class="center-horizontal block">
+    <h1>All Funds</h1>
+    <ul>
+    <% @funds.uniq.each do |fund| %>
+      <li><%= link_to "#{fund.symbol}", fund_path(fund) %></li>
+      <% end %>
+    </ul>
+    <br><br>
+  </div>
 </div>

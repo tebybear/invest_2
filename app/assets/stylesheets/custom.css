@@ -4,13 +4,17 @@ body {
   color: #f7f7f7;
 }
 
+label, p {
+  font-family: Helvetica;
+}
+
 .center-screen{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 
 .center-horizontal{
@@ -31,7 +35,7 @@ body {
   width: 160px
 }
 
-.button {
+.button, .link_button {
   background-color: #f7f7f7;
   border: 1px solid #454545;
   color: #454545;
@@ -47,9 +51,26 @@ body {
 .float-button {
   padding: 8px 20px;
   float: left;
-  width: 12.5%;
+  width: 16.65%;
   font-size: 30px;
   border-radius: 0px;
+}
+
+.multiple-columns {
+  -webkit-column-count: 3; -webkit-column-gap:20px;
+  -moz-column-count:3; -moz-column-gap:20px;
+  -o-column-count: 3; -o-column-gap:20px;
+  column-count: 3; column-gap:20px;
+  list-style-position: inside;
+}
+
+.two-columns {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 40px;
+  column-gap: 40px;
+  -moz-column-gap: 40px;
 }
 
 
@@ -61,23 +82,40 @@ ul {
   line-height: 1.35;
 }
 
-a {
+button_to {
   color: #454545;
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 table, th, td {
   text-align: center;
-  width: 100px
+  width: 100px;
 }
 
 table {
   width: 100%;
 }
 
-th, td {
-  border-bottom: 1px solid #454545;
+th {
+  font-weight: bold;
+  font-size: 18px;
 }
+
+tr:nth-child(even) {
+  background: #454545;
+  color: #f7f7f7;
+}
+
+tr:nth-child(odd) {
+  background: #f7f7f7;
+}
+
+
 
 #login {
   font-family: Helvetica;
@@ -92,4 +130,12 @@ th, td {
 
 #title {
   font-size: 50px;
+}
+
+#render_investments {
+  width: 100%;
+}
+
+#render-new-investment, #create-new-fund {
+  display: none;
 }

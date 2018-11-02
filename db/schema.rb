@@ -14,12 +14,14 @@ ActiveRecord::Schema.define(version: 2018_09_26_075440) do
 
   create_table "funds", force: :cascade do |t|
     t.string "symbol"
+    t.string "company"
+    t.string "sector"
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "investments", force: :cascade do |t|
-    t.boolean "action"
     t.integer "quantity"
     t.decimal "price"
     t.integer "user_id"

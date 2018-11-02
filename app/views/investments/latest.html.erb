@@ -1,12 +1,13 @@
 <div class="center-horizontal block">
-<h1>Most Recent Investments:</h1>
-<table style="width:100%">
+<h1>Latest Investments</h1>
+<br>
+<table>
   <tr>
-    <th align="left">Fund:</th>
-    <th align="left">Quantity:</th>
-    <th align="left">Price:</th>
-    <th align="left">Created By:</th>
-    <th align="left">Date Created:</th>
+    <th>Fund:</th>
+    <th>Quantity:</th>
+    <th>Price:</th>
+    <th>Created By:</th>
+    <th>Date Created:</th>
   </tr>
   <% @latest_investments.each do |investment| %>
     <tr>
@@ -15,9 +16,16 @@
       <td><%= investment.price%></td>
       <td><%= investment.user.username %></td>
       <td><%= investment.created_at.strftime("%m/%d/%Y") %></td>
-        <tr>
+    </tr>
     <% end %>
 </table>
 <br>
+<p id="load-investments" class="link_button"><%= link_to "See More Investments", investments_path %></p>
+<br>
+</div>
 
+<div class="center-horizontal block">
+  <table id="render-investments">
+  </table>
+  <br>
 </div>

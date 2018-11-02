@@ -1,12 +1,12 @@
-<h1>Explore All Investments:</h1>
-
-<table style="width:100%">
+<div class="center-horizontal block">
+<h1>All Investments</h1>
+<table>
   <tr>
-    <th align="left">Fund:</th>
-    <th align="left">Quantity:</th>
-    <th align="left">Price:</th>
-    <th align="left">Created By:</th>
-    <th align="left">Date Created:</th>
+    <th>Fund:</th>
+    <th>Quantity:</th>
+    <th>Price:</th>
+    <th>Created By:</th>
+    <th>Date Created:</th>
   </tr>
   <% @investments.order(created_at: :desc).each do |investment| %>
     <tr>
@@ -15,8 +15,9 @@
       <td><%= investment.price%></td>
       <td><%= investment.user.username %></td>
       <td><%= investment.created_at.strftime("%m/%d/%Y") %></td>
-        <tr>
+    </tr>
     <% end %>
 </table>
-
 <br>
+<br>
+</div>
