@@ -20,6 +20,10 @@ Set up the database:
 
     $ rake db:migrate
 
+Seed the database:
+
+    $ rake db:migrate
+
 Boot up the server:
 
     $ rails s
