@@ -1,16 +1,21 @@
 <div class="center-horizontal block">
   <h1 id="fund-symbol"><%= @fund.symbol %></h1>
-  <p id="fund-company"><strong>Company</strong>: <%= @quote["companyName"] %></p>
-  <p id="fund-sector"><strong>Sector</strong>: <%= @quote["sector"] %></p>
-  <p id="fund-price"><strong>Latest Price</strong>: <%= @quote["latestPrice"] %></p>
+  <p id="fund-company"><strong>Company</strong>: <%= @fund.company %></p>
+  <p id="fund-sector"><strong>Sector</strong>: <%= @fund.sector %></p>
+  <p id="fund-price"><strong>Latest Price</strong>: <%= @fund.price %></p>
+  <br>
   <p id="fund-users">Users With This Fund: <%= @fund.users.uniq.length %></p>
   <p id="fund-investments">Investments With This Fund: <%= @fund.investments.length %></p>
   <br><br>
 
   <div class="block two-columns">
+    <% if @fund.id > 1 %>
       <a href="#" id="previous-fund" data-fundId="<%= @fund.id %>"><< Previous Fund</a>
+    <% end %>
       <p></p>
+    <% if @fund.id < Fund.last.id %>
       <a href="#" id="next-fund" data-fundId="<%= @fund.id %>">Next Fund >></a>
+    <% end %>
   </div>
 </div>
 <br>

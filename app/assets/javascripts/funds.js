@@ -4,7 +4,7 @@ $(function(){
     e.preventDefault();
     fundId = $(this).data("fundid") - 1
     $.get("/funds/" + fundId + ".json", function(data) {
-      $("#fund-symbol").text()
+      $("#fund-symbol").text(data["symbol"])
       console.log(data);
     });
   });

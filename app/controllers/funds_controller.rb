@@ -26,6 +26,10 @@ class FundsController < ApplicationController
       @quote = "N/A"
     end
 
+    @fund.company = @quote["companyName"]
+    @fund.sector = @quote["sector"]
+    @fund.price = @quote["latestPrice"]
+
     respond_to do |f|
       f.html { render 'funds/show' }
       f.json { render :json=>  @fund, :layout => false, status: 200 }
