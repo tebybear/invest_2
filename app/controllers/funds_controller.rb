@@ -15,16 +15,8 @@ class FundsController < ApplicationController
 
   def show
     @fund = Fund.find_by(id: params[:id])
-    symbol = @fund.symbol
-
-    url = "https://api.iextrading.com/1.0/stock/#{symbol}/quote"
-    uri = URI(url)
-    result = Net::HTTP.get(uri)
-    if result != "Unknown symbol"
-      @quote = JSON.parse(result)
-    else
-      @quote = "N/A"
-    end
+    
+    iex_api(@fund.symbol)
 
     @fund.company = @quote["companyName"]
     @fund.sector = @quote["sector"]
@@ -38,6 +30,17 @@ class FundsController < ApplicationController
   end
 
   private
+
+  def iex_api(symbol)
+    url = "https://api.iextrading.com/1.0/stock/#{symbol}/quote"
+    uri = URI(url)
+    result = Net::HTTP.get(uri)
+    if result != "Unknown symbol"
+      @quote = JSON.parse(result)
+    else
+      @quote = "N/A"
+    end
+  end
 
   def fund_params
     params.require(:fund).permit(:symbol, :price, :company, :sector)

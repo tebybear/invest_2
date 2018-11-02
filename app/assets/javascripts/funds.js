@@ -2,7 +2,8 @@
 $(function(){
   $("a#previous-fund").on("click", function(e){
     e.preventDefault();
-    fundId = $(this).data("fundid") - 1
+    let fundId = $(this).data("fundid") - 1
+    console.log(fundId);
     $.get("/funds/" + fundId + ".json", function(data) {
       $("#fund-symbol").html(data["symbol"]);
       $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
@@ -17,7 +18,7 @@ $(function(){
 $(function(){
   $("a#next-fund").on("click", function(e){
     e.preventDefault();
-    fundId = $(this).data("fundid") + 1
+    let fundId = $(this).data("fundid") + 1
     $.get("/funds/" + fundId + ".json", function(data) {
       $("#fund-symbol").html(data["symbol"]);
       $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
