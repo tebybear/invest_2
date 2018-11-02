@@ -20,15 +20,6 @@ $(function(){
               <td>${investment.formattedDate()}</td>
             </tr>`
         )
-        // $('#render-investments').append(
-        //   `<tr>
-        //       <td>${investment.fund.symbol}</td>
-        //       <td>${investment.quantity}</td>
-        //       <td>${investment.price}</td>
-        //       <td>${investment.user.username}</td>
-        //       <td>${investment.created_at}</td>
-        //     </tr>`
-        // )
       });
     });
   });

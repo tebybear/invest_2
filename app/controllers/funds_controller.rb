@@ -15,13 +15,7 @@ class FundsController < ApplicationController
 
   def show
     @fund = Fund.find_by(id: params[:id])
-    if @fund.nil?
-      @fund = Fund.all.last
-    end
-    symbol = Fund.all.last.symbol
-    if symbol.nil?
-      symbol = @fund.symbol
-    end
+    symbol = @fund.symbol
 
     url = "https://api.iextrading.com/1.0/stock/#{symbol}/quote"
     uri = URI(url)
