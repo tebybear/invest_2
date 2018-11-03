@@ -14,10 +14,10 @@
   <%=f.hidden_field :user_id, :value => @user.id %>
 
   <%=f.label :quantity, "Quantity:" %>
-  <%=f.number_field :quantity %><br>
+  <%=f.number_field :quantity, placeholder: "ex. 5" %><br>
   <br>
   <%=f.label :price, "Price:" %>
-  <%=f.text_field :price %><br>
+  <%=f.text_field :price, placeholder: "ex. 100" %><br>
 
   <h4>Select from existing funds or add your fund:</h4>
 
@@ -25,7 +25,7 @@
   <br><br>
   <%= f.fields_for :new_fund do |fund_fields| %>
     <%= fund_fields.label :symbol, "Fund Symbol:" %>
-    <%= fund_fields.text_field :symbol %>
+    <%= fund_fields.text_field :symbol, placeholder: "ex. AAPL" %>
   <% end %>
   <br><br>
   <%=f.submit "Submit", :class => "button", data: { disable_with: false }%><br>
