@@ -10,7 +10,7 @@ Fork and clone this repo.
 
 Navigate to its location:
 
-    $ cd i.nvest
+    $ cd i.nvest_2
 
 Update gems:
 
