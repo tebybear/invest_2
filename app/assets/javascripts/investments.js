@@ -8,6 +8,20 @@ $(function(){
         '<h1>All Investments</h1>'
       )
       renderHeader();
+
+      data.sort(function(a, b) {
+        var nameA = a.fund.symbol;
+        var nameB = b.fund.symbol;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+      console.log(data)
+
       data.forEach(function(item) {
         let investment = new Investment(item)
         $('#render-investments').append(
@@ -44,7 +58,6 @@ $(function() {
     let formData = $(this).serialize();
     $.post("/users/" + id + "/investments" + ".json", formData).done(function(data) {
       let investment = new Investment(data);
-      console.log(investment)
       clearInputs();
 
       $('li#create-new-fund').append(
@@ -72,12 +85,12 @@ class Investment {
     this.id = attributes.id;
     this.quantity = attributes.quantity;
     this.price = attributes.price;
-    this.created_at = attributes.created_at;
+    this.createdAt = attributes.created_at;
     this.user = attributes.user;
     this.fund = attributes.fund.symbol;
   }
   formattedDate(){
-    return moment(this.created_at).format("MM/DD/YYYY");
+    return moment(this.createdAt).format("MM/DD/YYYY");
   }
   deleteButton() {
     return `<form class="button_to" method="post" action="/users/${this.user.id}/investments/${this.id}">

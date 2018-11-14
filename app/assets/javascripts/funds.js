@@ -7,7 +7,7 @@ $(function(){
     if (fundId > 1) {
       --fundId;
     }
-    $.get("/funds/" + fundId + ".json", function(data) {
+    $.get("/funds/" + fundId, function(data) {
       $("#fund-symbol").html(data["symbol"]);
       $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
       $("#fund-sector").html("<strong>Sector</strong>: " + data["sector"]);
@@ -15,7 +15,7 @@ $(function(){
       $("#fund-users").html("Users With This Fund: " + data["users"].length);
       $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
       $("#fund-id").text(data["id"]);
-    });
+    }, 'json');
   });
 
   $("a#next-fund").on("click", function(e){
@@ -24,7 +24,7 @@ $(function(){
     if (id === fundId) {
       ++fundId;
     }
-    $.get("/funds/" + fundId + ".json", function(data) {
+    $.get("/funds/" + fundId, function(data) {
       $("#fund-symbol").html(data["symbol"]);
       $("#fund-company").html("<strong>Company</strong>: " + data["company"]);
       $("#fund-sector").html("<strong>Sector</strong>: " + data["sector"]);
@@ -32,7 +32,7 @@ $(function(){
       $("#fund-users").html("Users With This Fund: " + data["users"].length);
       $("#fund-investments").html("Investments With This Fund: " + data['investments'].length);
       $("#fund-id").text(data["id"]);
-    }).fail(function() {
+    }, 'json').fail(function() {
       --fundId;
     });
   });
