@@ -19,7 +19,17 @@ class InvestmentsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @investment = @user.investments.build(investment_params)
+    @fund = @investment.fund
+
+    iex = IexService.new
+    @quote = iex.quote(@fund.symbol)
+
+    @investment.price = @quote["latestPrice"]
+    # @fund.company = @quote["companyName"]
+    # @fund.sector = @quote["sector"]
+    
     if @investment.save
+
       respond_to do |f|
         f.html { redirect_to user_path(@user) }
         f.json { render :json => @investment, :layout => false, status: 200 }
@@ -33,10 +43,6 @@ class InvestmentsController < ApplicationController
     @investment = Investment.find_by(id: params[:id])
     @investment.destroy
     redirect_to user_path(current_user)
-    # respond_to do |f|
-    #   f.html { redirect_to user_path(current_user) }
-    #   f.json { render :layout => false }
-    # end
   end
 
   def latest
