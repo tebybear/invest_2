@@ -37,7 +37,7 @@ gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
 # gem 'faraday'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem "rack", ">= 2.0.6"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
