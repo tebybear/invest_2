@@ -90,7 +90,7 @@ class Investment {
     this.fund = attributes.fund.symbol;
   }
   formattedDate(){
-    return moment(this.createdAt).format("MM/DD/YYYY");
+    return moment.parseZone(this.createdAt).format("MM/DD/YYYY");
   }
   deleteButton() {
     return `<form class="button_to" method="post" action="/users/${this.user.id}/investments/${this.id}">

@@ -29,7 +29,6 @@ class InvestmentsController < ApplicationController
     # @fund.sector = @quote["sector"]
     
     if @investment.save
-
       respond_to do |f|
         f.html { redirect_to user_path(@user) }
         f.json { render :json => @investment, :layout => false, status: 200 }
