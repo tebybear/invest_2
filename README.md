@@ -4,6 +4,10 @@ A platform for investors to share their investments. Track and share your funds 
 
 Sign up through the site or using your Google account to begin.
 
+## Demo
+
+![i.nvest demo](https://media.giphy.com/media/YV59B1eyIshp342Qgc/giphy.gif)
+
 ## Installation
 
 Fork and clone this repo.
