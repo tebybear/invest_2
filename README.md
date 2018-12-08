@@ -8,6 +8,8 @@ Sign up through the site or using your Google account to begin.
 
 ![i.nvest demo](https://media.giphy.com/media/YV59B1eyIshp342Qgc/giphy.gif)
 
+Site: https://invest2-app.herokuapp.com/
+
 ## Installation
 
 Fork and clone this repo.
